@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- NavBar -->
+    <div class="NavBar_wrapper">
+        <!-- NavBar_logo -->
+        <div class="NavBar_logo">
+            <a href="">
+                <img src="../../assets/LogoHeading.png" />
+            </a>
+        </div>
+    </div>
+
+    <!-- Section -->
+    <div class="App_withSideBar">
+        <!-- Sidebar -->
+        <div class="App_sidebarWrap">
+            <div class="Sidebar_wrapper">
+                <div class="Sidebar_List">
+                    <!-- 1 -->
+                    <div class="Testing_infor">
+                        <div class="Infor_wrapper">
+                            <label>Mã bài thi:&ensp;<span class="IDTest">654321</span></label>
+                            <h3>Bài TH3 môn LTUDM - 63IT2</h3>
+                            <div>
+                                <a class="material-icons icon_teacher"> account_box </a>
+                                <p>Giảng viên:&ensp;<span class="TeacherTest">Lê Đức Quang</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="Testing_time_actions">
+                        <div class="Time_Actions_wrapper">
+                            <div class="time_wrapper">
+                                <h4>Thời
+                                    gian:&nbsp;<span>02</span>&nbsp;giờ&nbsp;<span>40</span>&nbsp;phút&nbsp;<span>12</span>&nbsp;giây
+                                </h4>
+                            </div>
+                            <div class="actions_wrapper">
+                                <button class="status_unfinish">Nộp bài</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="Testing_questionList">
+                        <div class="QuestionList_wrapper">
+                            <h4>Danh sách câu hỏi</h4>
+
+                            <div class="ordinalNumQuestion_wrapper">
+                              <li  *ngFor="let question of questions; let i = index" style="list-style-type: none">
+                                <button id="number-{{i}}" value="{{i}}" (click)="onClickMe($event)" class="ordinalNumQuestion_square status_choosed">
+                                    {{i + 1}}
+                                </button>
+                              </li>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="Testing_countQuestion">
+                        <div class="countQuestion_wrapper">
+                            <h4>Tổng số câu:&ensp;<span class="sumQuestion">20</span></h4>
+                            <h4>Số câu đã chọn:&ensp;<span class="choosedQuestion">2</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Question -->
+        <div class="App_withSidebarContent">
+            <section class="Section_content">
+                <div class="QuestionContent_wrapper">
+                    <div class="Question_wrapper">
+                      <form action="">
+                        <div class="Question">
+                          <h3>Câu {{question.id}}:&ensp;<span>(Có thể chọn một hoặc nhiều phương án)</span></h3>
+                          <br />
+                          <label>{{question.content}}.</label>
+                      </div>
+                      <div class="Answer">
+                          <div class="answer_items">
+                            <li *ngFor="let ans of question.answer; let i = index;" style="list-style-type: none;">
+                              <div>
+                                <form action="">
+                                  <input name="an" id="{{ans.id}}" type="radio" />&emsp;<label>{{ans.content}}</label>
+                                </form>
+                            </div>
+                            </li>
+                          </div>
+                      </div>
+                      </form>
+                    </div>
+                    <div class="Image_wrapper">
+                        <div class="image_place">
+                            <span class="material-icons-outlined"> image </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="Footer_wrapper">
+        <p>Copyright © Team 09 Đồ án LTUDM</p>
+    </div>
+</body>
+
+</html>
