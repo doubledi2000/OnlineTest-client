@@ -1,0 +1,121 @@
+
+
+<body>
+    <!-- NavBar -->
+    <app-navbar-component></app-navbar-component>
+    <!-- Section -->
+    <div class="App_withSidebar">
+        <!-- Sidebar -->
+        <app-slide-bar></app-slide-bar>
+        <!-- APP CONTENT -->
+        <div class="App_withSidebarContent">
+            <section class="Section_content">
+                <!-- Main content -->
+                <div class="Home_wrapper-exam">
+                    <div class="SectionList_wrapper">
+                        <div class="SectionList_headingWrap">
+                            <h2 class="SectionList_heading">Bài thi sắp diễn ra</h2>
+                        </div>
+                        <div class="SectionList_bodyWrap">
+                            <!-- Exam Active -->
+                            <li *ngFor="let item of testActive" style="list-style-type: none;">
+                            <section class="Exam_examItem">
+                                <div class="examItem_wrapper">
+                                    <div class="green_retangle"></div>
+                                    <div class="item_label-red">
+                                        <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                                        <h1>{{item.title}}</h1>
+                                    </div>
+                                    <div class="item_infomation">
+                                        <div>
+                                            <a class="material-icons icon_teacher"> account_box </a>
+                                            <p>Giảng viên:&nbsp;<span>{{item.professor}}</span></p>
+                                        </div>
+                                        <div>
+                                            <a class="material-icons icon_timer"> alarm </a>
+                                            <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
+                                        </div>
+                                    </div>
+                                    <button>Bắt đầu thi</button>
+                                </div>
+                            </section>
+                          </li>
+                            <!-- Exam disabled -->
+                            <li *ngFor="let item of testUnactive; let i = index" style="list-style-type: none;">
+                            <section class="Exam_examItem">
+                                <div class="examItem_wrapper">
+                                    <div class="green_retangle"></div>
+                                    <div class="item_label-red">
+                                        <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                                        <h1>{{item.title}}</h1>
+                                    </div>
+                                    <div class="item_infomation">
+                                        <div>
+                                            <a class="material-icons icon_teacher"> account_box </a>
+                                            <p>Giảng viên:&nbsp;<span>{{item.professor}}</span></p>
+                                        </div>
+                                        <div>
+                                            <a class="material-icons icon_timer"> alarm </a>
+                                            <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
+                                        </div>
+                                    </div>
+                                    <button>Bắt đầu thi</button>
+                                    <div class="disable_countdown">
+                                        <div class="Bg_countdown-white">
+                                            <div class="Timer_wrapper">
+                                                <div class="Timer count_hours">
+                                                    <h1><countdown [config]="hourConfig[i]"></countdown></h1>
+                                                    <label>Giờ</label>
+                                                </div>
+                                                <div class="Timer count_minutes">
+                                                    <h1><countdown [config]="minuteConfig[i]"></countdown></h1>
+                                                    <label>Phút</label>
+                                                </div>
+                                                <div class="Timer count_seconds">
+                                                    <h1><countdown [config]="secondConfig[i]"></countdown></h1>
+                                                    <label>Giây</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                          </li>
+                          <!-- Exam start longer than 1 day -->
+                            <li *ngFor="let item of testUnactiveToLong; let i = index" style="list-style-type: none;">
+                            <section class="Exam_examItem">
+                                <div class="examItem_wrapper">
+                                    <div class="green_retangle"></div>
+                                    <div class="item_label-red">
+                                        <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                                        <h1>{{item.title}}</h1>
+                                    </div>
+                                    <div class="item_infomation">
+                                        <div>
+                                            <a class="material-icons icon_teacher"> account_box </a>
+                                            <p>Giảng viên:&nbsp;<span>{{item.professor}}</span></p>
+                                        </div>
+                                        <div>
+                                            <a class="material-icons icon_timer"> alarm </a>
+                                            <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
+                                        </div>
+                                    </div>
+                                    <button>Bắt đầu thi</button>
+                                    <div class="disable_countdown">
+                                        <div class="Bg_countdown-white">
+                                            <div class="Timer_wrapper" style="flex-direction: column;">
+                                              <div style="margin: 0 auto;">Sắp diễn ra</div>
+                                              <div style="margin: 0 auto;">{{timeString[i]}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                          </li>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+

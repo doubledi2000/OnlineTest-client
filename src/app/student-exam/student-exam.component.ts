@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CountdownComponent } from 'ngx-countdown';
-import { Test } from 'src/app/common/test';
-import { CountdownConfig } from 'ngx-countdown';
+import { Test } from '../common/test';
+
 @Component({
-  selector: 'app-studentss-test',
-  templateUrl: './studentss-test.component.html',
-  styleUrls: ['./studentss-test.component.css']
+  selector: 'app-student-exam',
+  templateUrl: './student-exam.component.html',
+  styleUrls: ['./student-exam.component.css']
 })
-export class StudentssTestComponent implements OnInit {
+export class StudentExamComponent implements OnInit {
+
   tests: Test[] = [
     {
       id: 123,
@@ -68,7 +68,7 @@ export class StudentssTestComponent implements OnInit {
       title: 'Kiểm tra cuối kì Lập trình hướng đối tượng.',
       professor: 'Đoàn Mạnh Đông',
       time: 90,
-      startTime: new Date('2022-1-12 14:00'),
+      startTime: new Date('2021-12-12 14:00'),
       submitionTime: new Date('2021-12-12 14:00'),
       numberOfQuestion: 20,
       correctAnswer: 0,

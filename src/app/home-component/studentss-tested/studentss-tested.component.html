@@ -1,0 +1,36 @@
+<div class="SectionList_wrapper">
+  <div class="SectionList_headingWrap">
+      <h2 class="SectionList_heading">Bài đã thi</h2>
+      <a routerLink="/student-grade">Xem tất cả <span class="material-icons icon_seeAll">
+              chevron_right </span></a>
+  </div>
+  <div id="hoover_scrollButton2" class="SectionList_bodyWrap">
+      <div class="SectionList_body">
+          <!-- Grade -->
+          <li *ngFor="let test of tests" style="list-style-type: none;">
+          <section class="Home_examItem">
+              <div class="examItem_wrapper">
+                  <div class="item_label orange">
+                      <label>Mã bài thi:&ensp;<span>{{test.id}}</span></label>
+                      <h1>{{test.title}}</h1>
+                  </div>
+                  <div class="item_infomation itemGrade">
+                      <div>
+                          <a class="material-icons icon_teacher"> account_box </a>
+                          <p>Giảng viên:<span>{{test.professor}}</span></p>
+                      </div>
+                  </div>
+                  <div class="item_bottom orangeBottom">
+                      <h1>{{test.correctAnswer}}/{{test.numberOfQuestion}}&ensp;-&ensp;({{test.correctAnswer / test.numberOfQuestion * 100}}%)</h1>
+                  </div>
+              </div>
+          </section>
+        </li>
+      </div>
+      <!-- <div id="scrollButton_enable2" class="horizontalScroll_button">
+          <div class="white_cirle">
+              <span class="material-icons"> arrow_forward_ios </span>
+          </div>
+      </div> -->
+  </div>
+</div>

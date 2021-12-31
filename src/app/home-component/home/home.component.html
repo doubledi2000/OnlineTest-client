@@ -1,23 +1,25 @@
-
 <body>
   <!-- NavBar -->
-      <app-navbar-component></app-navbar-component>
+  <app-navbar-component></app-navbar-component>
 
   <!-- Section -->
   <div class="App_withSidebar">
-      <!-- Sidebar -->
-      <app-slide-bar></app-slide-bar>
-      <!-- APP CONTENT -->
-      <div class="App_withSidebarContent">
-          <section class="Section_content">
-              <!-- Header -->
-              <app-info-student></app-info-student>
-              <!-- Main content -->
-              <app-studentss-test></app-studentss-test>
-          </section>
-      </div>
+    <!-- Sidebar -->
+    <app-slide-bar></app-slide-bar>
+    <!-- APP CONTENT -->
+    <div class="App_withSidebarContent">
+      <section class="Section_content">
+        <!-- Header -->
+        <app-info-student></app-info-student>
+        <!-- Main content -->
+        <div class="Home_wrapper-student">
+          <app-studentss-test></app-studentss-test>
+          <app-studentss-tested></app-studentss-tested>
+        </div>
+      </section>
+    </div>
   </div>
   <div class="Footer_wrapper">
-      <p>Copyright © Team 09 Đồ án LTUDM</p>
+    <p>Copyright © Team 09 Đồ án LTUDM</p>
   </div>
 </body>

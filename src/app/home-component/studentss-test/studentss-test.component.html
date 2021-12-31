@@ -1,52 +1,53 @@
 
-<div class="Home_wrapper-student">
   <!-- Bai thi sap dien ra -->
   <div class="SectionList_wrapper">
       <div class="SectionList_headingWrap">
           <h2 class="SectionList_heading">Bài thi sắp diễn ra</h2>
-          <a href="../ExamPage/Exam.html">Xem tất cả <span class="material-icons icon_seeAll">
+          <a routerLink="/student-exam">Xem tất cả <span class="material-icons icon_seeAll">
                   chevron_right </span></a>
       </div>
       <div id="scrollHorizontally" class="SectionList_bodyWrap">
           <div class="SectionList_body">
+            <li *ngFor="let item of testActive" style="list-style-type: none;">
               <!-- Exam Active -->
               <section class="Home_examItem">
                   <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                  </div>
+                    <div class="item_label red">
+                        <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                        <h1>{{item.title}}</h1>
+                    </div>
+                    <div class="item_infomation">
+                        <div>
+                            <a class="material-icons icon_teacher"> account_box </a>
+                            <p>Giảng viên:<span>{{item.professor}}</span></p>
+                        </div>
+                        <div>
+                            <a class="material-icons icon_timer"> alarm </a>
+                            <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
+                        </div>
+                    </div>
+                    <a class="item_bottom greenBottom" routerLink="/student-test">
+                        <button href="">Bắt đầu thi</button>
+                    </a>
+                </div>
               </section>
-
+            </li>
               <!-- Exam disabled -->
+              <li *ngFor="let item of testUnactive; let i = index" style="list-style-type: none;">
               <section class="Home_examItem">
                   <div class="examItem_wrapper">
                       <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
+                          <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                          <h1>{{item.title}}</h1>
                       </div>
                       <div class="item_infomation">
                           <div>
                               <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
+                              <p>Giảng viên:<span>{{item.professor}}</span></p>
                           </div>
                           <div>
                               <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
+                              <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
                           </div>
                       </div>
                       <div class="item_bottom greenBottom">
@@ -55,41 +56,40 @@
                       <div class="disable_countdown">
                           <div class="Bg_countdown-white">
                               <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
                                   <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
+                                      <h1><countdown  [config]="hourConfig[i]"></countdown></h1>
+                                      <label>Giờ</label>
                                   </div>
                                   <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
+                                      <h1><countdown  [config]="minuteConfig[i]"></countdown></h1>
+                                      <label>Phút</label>
                                   </div>
                                   <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
+                                      <h1><countdown  [config]="secondConfig[i]"></countdown></h1>
+                                      <label>Giây</label>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
               </section>
+            </li>
+
+            <li *ngFor="let item of testUnactiveToLong; let i = index" style="list-style-type: none;">
               <section class="Home_examItem">
                   <div class="examItem_wrapper">
                       <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
+                          <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                          <h1>{{item.title}}</h1>
                       </div>
                       <div class="item_infomation">
                           <div>
                               <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
+                              <p>Giảng viên:<span>{{item.professor}}</span></p>
                           </div>
                           <div>
                               <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
+                              <label class="font_weight-bold">{{item.time}}&nbsp;phút</label>
                           </div>
                       </div>
                       <div class="item_bottom greenBottom">
@@ -97,286 +97,16 @@
                       </div>
                       <div class="disable_countdown">
                           <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
+                              <div class="Timer_wrapper" style="flex-direction: column">
+                                <h1 style="margin: 0 auto;">Coming soon</h1>
+                                <h2 style="margin: 0 auto;">{{timeString[i]}}</h2>
                               </div>
+
                           </div>
                       </div>
                   </div>
               </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label red">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                          <div>
-                              <a class="material-icons icon_timer"> alarm </a>
-                              <label class="font_weight-bold">180&nbsp;phút</label>
-                          </div>
-                      </div>
-                      <div class="item_bottom greenBottom">
-                          <button>Bắt đầu thi</button>
-                      </div>
-                      <div class="disable_countdown">
-                          <div class="Bg_countdown-white">
-                              <div class="Timer_wrapper">
-                                  <div class="Timer count_days">
-                                      <h1>05</h1>
-                                      <label>Days</label>
-                                  </div>
-                                  <div class="Timer count_hours">
-                                      <h1>11</h1>
-                                      <label>Hours</label>
-                                  </div>
-                                  <div class="Timer count_minutes">
-                                      <h1>56</h1>
-                                      <label>Minutes</label>
-                                  </div>
-                                  <div class="Timer count_seconds">
-                                      <h1>20</h1>
-                                      <label>Seconds</label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </section>
+            </li>
           </div>
           <!-- <button id="scrollButton_enable" class="horizontalScroll_button">
               <div class="white_cirle">
@@ -387,157 +117,4 @@
   </div>
 
   <!-- Bai da thi -->
-  <div class="SectionList_wrapper">
-      <div class="SectionList_headingWrap">
-          <h2 class="SectionList_heading">Bài đã thi</h2>
-          <a href="../GradePage/Grade.html">Xem tất cả <span class="material-icons icon_seeAll">
-                  chevron_right </span></a>
-      </div>
-      <div id="hoover_scrollButton2" class="SectionList_bodyWrap">
-          <div class="SectionList_body">
-              <!-- Grade -->
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-              <section class="Home_examItem">
-                  <div class="examItem_wrapper">
-                      <div class="item_label orange">
-                          <label>Mã bài thi:&ensp;<span>654321</span></label>
-                          <h1>Bài TH3 môn LTUDM - 63IT2</h1>
-                      </div>
-                      <div class="item_infomation itemGrade">
-                          <div>
-                              <a class="material-icons icon_teacher"> account_box </a>
-                              <p>Giảng viên:<span>Lê Đức Quang</span></p>
-                          </div>
-                      </div>
-                      <div class="item_bottom orangeBottom">
-                          <h1>17/20&ensp;-&ensp;(85.00%)</h1>
-                      </div>
-                  </div>
-              </section>
-          </div>
-          <!-- <div id="scrollButton_enable2" class="horizontalScroll_button">
-              <div class="white_cirle">
-                  <span class="material-icons"> arrow_forward_ios </span>
-              </div>
-          </div> -->
-      </div>
-  </div>
-</div>
+

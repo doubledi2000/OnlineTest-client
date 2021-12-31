@@ -1,0 +1,50 @@
+
+<body>
+    <!-- NavBar -->
+  <app-navbar-component></app-navbar-component>
+
+    <!-- Section -->
+    <div class="App_withSidebar">
+        <!-- Sidebar -->
+      <app-slide-bar></app-slide-bar>
+        <!-- APP CONTENT -->
+        <div class="App_withSidebarContent">
+            <section class="Section_content">
+
+                <!-- Main content -->
+                <div class="Home_wrapper-grade">
+                    <div class="SectionList_wrapper">
+                        <div class="SectionList_headingWrap">
+                            <h2 class="SectionList_heading">Bài đã thi</h2>
+                        </div>
+                        <div class="SectionList_bodyWrap">
+                            <!-- Grade Exams -->
+                            <li *ngFor="let item of tests" style="list-style-type: none;">
+                            <section class="Grade_gradeItem">
+                                <div class="gradeItem_wrapper">
+                                    <div class="green-orange-gradient_retangle"></div>
+                                    <div class="item_label">
+                                        <label>Mã bài thi:&ensp;<span>{{item.id}}</span></label>
+                                        <h1>{{item.title}}</h1>
+                                    </div>
+                                    <div class="item_infomation">
+                                        <div>
+                                            <a class="material-icons icon_teacher"> account_box </a>
+                                            <p>Giảng viên:&nbsp;<span>{{item.professor}}</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="bg_gradeInfomation-orange">
+                                        <div class="grade_itemExam">
+                                            <div>Đáp án đúng</div>
+                                            <div>{{item.correctAnswer}}/{{item.numberOfQuestion}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                          </li>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
